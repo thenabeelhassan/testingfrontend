@@ -14,9 +14,12 @@ fetch('http://backend:7000')  // replace with your API endpoint
 })
   .then(data => {
     console.log('Data received:', data);
-    document.getElementById("backend").innerText = data;
+    
+    const backendMessage = `Time: ${data.time}, Host: ${data.hostname}, IP: ${data.ipAddress}`;
+    document.getElementById("backend").innerText = backendMessage;
 })
   .catch(error => {
     console.error('Fetch error:', error);
-    document.getElementById("backend").innerText = error;
+    
+    document.getElementById("backend").innerText = 'Backend error: ' + error.message;
 });
